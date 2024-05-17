@@ -1,10 +1,3 @@
-<?php
-
-require_once "../../helpers/navbar.php";
-require_once "../../helpers/head.php";
-
-?>
-
 <html>
 <head>
     <meta charset='utf-8'>
@@ -70,22 +63,22 @@ require_once "../../helpers/head.php";
 <body>
   <nav class='navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body'>
   <div class='container-fluid'>
-    <a class='navbar-brand' href='index.php'>Burrific</a>
+    <a class='navbar-brand' href="{{route('dashboard')}}">Burrific</a>
     <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
       <span class='navbar-toggler-icon'></span>
     </button>
     <div class='collapse navbar-collapse' id='navbarSuportContent'>
       <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
         <li class='nav-item'>
-          <a class='nav-link' aria-current='page' href="{{ route('home') }}">Home</a>
+          <a class='nav-link' aria-current='page' href="{{ route('dashboard') }}">Home</a>
         </li>
           
         <li class='nav-item'>
-          <a class='nav-link active' aria-current='page' href="{{ route('cadastrar-participante') }}">Cadastrar Participante</a>
+          <a class='nav-link active' aria-current='page' href="{{ route('cadastrarParticipantesPage') }}">Cadastrar Participante</a>
         </li>
           
         <li class='nav-item'>
-          <a class='nav-link' aria-current='page' href="{{ route('registrar-pontos') }}">Registrar Pontos</a>
+          Registrar Pontos
         </li>
 
       </ul>
@@ -93,7 +86,7 @@ require_once "../../helpers/head.php";
     </div>
   </nav>
     <div class="form-div">
-      <form id="form-cadastro" action="{{ route('registrar-participante') }}" method="POST">
+      <form id="form-cadastro" action="{{ route('registrarParticipante') }}" method="POST">
         {{ csrf_field() }}
         <div class="mb-3">
           <label for="inputNome" class="form-label">Nome do aminal</label>
@@ -105,5 +98,23 @@ require_once "../../helpers/head.php";
         <button type="submit" class="btn btn-primary">Enviar</button>
       </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+      $document.ready(function() {
+        $.ajax({
+          url: "/get-departments",
+          type: 'GET',
+          dataType: 'json',
+          success: async function(data){
+            
+          },
+          error: function(jqXHR, textStatus, errorThrown){
+            console.error('Failed to retrieve data: ' + errorThrown);
+          }
+        });
+      })
+    </script>
 </body>
 </html>

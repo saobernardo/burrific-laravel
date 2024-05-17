@@ -1,9 +1,3 @@
-<?php
-
-//require_once "../../helpers/navbar.php";
-//require_once "../../helpers/head.php";
-
-?>
 <html>
 <head>
     <meta charset='utf-8'>
@@ -81,11 +75,11 @@
     <div class='collapse navbar-collapse' id='navbarSuportContent'>
       <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
         <li class='nav-item'>
-          Home
+          <a class='nav-link' aria-current='page' href="{{ route('dashboard') }}">Home</a>
         </li>
           
         <li class='nav-item'>
-          Cadastrar Participante
+          <a class='nav-link active' aria-current='page' href="{{ route('cadastrarParticipantesPage') }}">Cadastrar Participante</a>
         </li>
           
         <li class='nav-item'>
@@ -130,7 +124,7 @@
         let points = [];
 
         $.ajax({
-          url: "./init-index-1.php",
+          url: "/get-graphic-data",
           type: 'GET',
           dataType: 'json',
           success: async function(data){

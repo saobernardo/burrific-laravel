@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RegistrarParticipanteController;
 use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\MenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +18,13 @@ use App\Http\Controllers\Dashboard;
 */
 
 Route::get('/', 
-    [Dashboard::class, 'viewDashboard']
+[Dashboard::class, 'viewDashboard']
 )->name('dashboard');
 
-Route::get('/get-last-burrices',
-    [Dashboard::class, 'ajaxTableLastBurrices']
-)->name('getLastBurrice');
+require __DIR__."/custom-routes/dashboard-routes.php";
+require __DIR__."/custom-routes/cadastrar-participantes-routes.php";
 
+//Processamentos
 Route::post('/registrar-participante', 
-    [RegistrarParticipanteController::class, 'register']
-)->name('saveItem');
+  [RegistrarParticipanteController::class, 'register']
+)->name('registrarParticipante');
