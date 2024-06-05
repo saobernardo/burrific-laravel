@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\MenuController;
 
 Route::get('/participant-details-page',
   [Dashboard::class, 'viewParticipantesDetalhes']
