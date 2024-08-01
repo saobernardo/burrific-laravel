@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\RegistrarParticipanteController;
+use App\Http\Controllers\ParticipanteController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\MenuController;
 
@@ -26,5 +26,5 @@ require __DIR__."/custom-routes/cadastrar-participantes-routes.php";
 
 //Processamentos
 Route::post('/registrar-participante', 
-  [RegistrarParticipanteController::class, 'register']
+  [ParticipanteController::class, 'register']
 )->name('registrarParticipante');

@@ -86,14 +86,15 @@
     </div>
   </nav>
     <div class="form-div">
-      <form id="form-cadastro" action="{{ route('registrarParticipante') }}" method="POST">
+      <form id="form-cadastro" action="{{ route('newParticipant') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="mb-3">
           <label for="inputNome" class="form-label">Nome do aminal</label>
           <input type="text" class="form-control" id="inputNome" name="inputNome" required>
-
+        </div>
+        <div class="mb-3">
           <label for="inputDepartamento" class="form-label">Departamento</label>
-          <select class="form-select" id="select-departamento" name="id-departamento" aria-label="Departamentos da empresa" required>
+          <select class="form-select" id="idDepartamento" name="idDepartamento" aria-label="Departamentos da empresa" required></select>
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
       </form>
@@ -108,7 +109,7 @@
           type: 'GET',
           dataType: 'json',
           success: async function(data){
-            let select = $('#select-departamento');
+            let select = $('#idDepartamento');
 
             select.append('<option value = "">Selecione um departamento</option>')
             $.each(data, function(index, item){
@@ -119,6 +120,41 @@
           error: function(jqXHR, textStatus, errorThrown){
             console.error('Failed to retrieve data: ' + errorThrown);
           }
+        });
+
+        $('#form-cadastro').submit(function(event){
+          event.preventDefault();
+
+          var formData = new FormData(this);
+
+          $.ajax({
+            url: "/new-participant",
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response){
+              let responseParsed = JSON.parse(response);
+              //console.log(responseParsed);
+
+              swal.fire({
+                title: 'Inscrito',
+                text: responseParsed.msg,
+                icon: 'success'
+              });
+
+              setTimeout(location.href = "{{ route('dashboard') }}", 5000);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                // Handle errors here
+                console.error(textStatus, errorThrown);
+                Swal.fire({
+                  title: textStatus,
+                  text: errorThrown,
+                  icon: 'error',
+                });
+            }
+          });
         });
       })
     </script>
