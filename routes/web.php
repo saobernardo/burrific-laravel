@@ -23,6 +23,7 @@ Route::get('/',
 
 require __DIR__."/custom-routes/dashboard-routes.php";
 require __DIR__."/custom-routes/cadastrar-participantes-routes.php";
+require __DIR__."/custom-routes/makescore-routes.php";
 
 //Processamentos
 Route::post('/registrar-participante', 

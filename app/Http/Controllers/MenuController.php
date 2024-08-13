@@ -12,4 +12,8 @@ class MenuController extends Controller
   public function viewCadastrarParticipante(Request $request){
     return view('insert-participants.index');
   }
+
+  public function viewRegistrarPontos(Request $request){
+    return view('make-score.index');
+  }
 }

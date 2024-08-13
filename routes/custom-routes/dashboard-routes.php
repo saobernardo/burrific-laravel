@@ -13,6 +13,10 @@ Route::get('/cadastrar-participante-page',
   [MenuController::class, 'viewCadastrarParticipante']
 )->name('cadastrarParticipantesPage');
 
+Route::get('/registrar-pontos-page',
+  [MenuController::class, 'viewRegistrarPontos']
+)->name('registrarPontosPage');
+
 //Ajax
 Route::get('/get-last-burrices',
   [Dashboard::class, 'ajaxTableLastBurrices']

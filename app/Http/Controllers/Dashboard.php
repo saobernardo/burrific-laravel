@@ -13,16 +13,6 @@ class Dashboard extends Controller
     return view('dashboard.index');
   }
 
-  public function viewCadastrarParticipante(Request $request){}
-
-  public function viewRegistrarPontos(Request $request){}
-
-  public function viewColaborador(Request $request){}
-
-  public function viewRankings(Request $request){}
-
-  public function viewParticipantesDetalhes(Request $request){}
-
   public function ajaxTableLastBurrices(Request $request){
     $query = "SELECT tpa.id as id, tpa.nome AS nome, SUM(tb.pontos) AS pontos, MAX(tb.descricao) AS descricao FROM tblparticipantes tpa INNER JOIN tblburrice_log tb ON tpa.id = tb.id_participante GROUP BY tpa.id ORDER BY tb.data_ocorrido DESC LIMIT 5";
     $resSelect = DB::select($query);

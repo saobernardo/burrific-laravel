@@ -83,7 +83,7 @@
         </li>
           
         <li class='nav-item'>
-          Registrar Pontos
+          <a class="nav-link active" aria-current="page" href="{{ route('registrarPontosPage') }}">Registrar Pontos</a>
         </li>
       </ul>
     </div>

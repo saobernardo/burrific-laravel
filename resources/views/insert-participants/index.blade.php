@@ -78,7 +78,7 @@
           </li>
             
           <li class='nav-item'>
-            Registrar Pontos
+            <a class='nav-link active' aria-current='page' href="{{ route('registrarPontosPage') }}">Registrar Pontos</a>
           </li>
 
         </ul>
@@ -125,7 +125,7 @@
         $('#form-cadastro').submit(function(event){
           event.preventDefault();
 
-          var formData = new FormData(this);
+          let formData = new FormData(this);
 
           $.ajax({
             url: "/new-participant",
