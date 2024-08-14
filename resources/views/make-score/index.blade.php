@@ -121,7 +121,7 @@
 
           let formData = new FormData(this);
 
-          if(('#qty-points').value() <= 0 ){
+          if($('#qty-points').val() <= 0 ){
             Swal.fire({
               title: 'Pontuação inválida',
               text: 'Campo de vlaor numérico só pode ser maior que zero',
@@ -130,8 +130,6 @@
 
             return false;
           }
-
-          console.log('Executou submit');
 
           $.ajax({
             url: '/points-register',

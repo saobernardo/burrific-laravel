@@ -185,7 +185,6 @@
             var bodyTable = $("#body-main-table");
 
             $.each(data, function(index, item){
-              console.log(item)
               bodyTable.append(`<tr>
                                   <td>${item.id}</td>
                                   <td><a href='../resumo-participante/index.php?id=${item.id}' class='link-info link-offset-2'>${data[index].nome}</a></td>
