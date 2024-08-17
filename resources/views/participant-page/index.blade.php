@@ -46,12 +46,18 @@
       function excluirBurrice(id){
           $.ajax({
             type: "DELETE",
-            url: "./process-excluirBurrice.php?id="+id,
+            url: `/excluir-registro-participante?id=${id}&_token={{csrf_token()}}`,
+            //headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             success: function(result){
               location.reload();
             },
             error: function(jqXHR, textStatus, errorThrown){
-              console.log('Erro na requisição DELETE:' + errorThrown)
+              console.log('Erro na requisição DELETE:' + errorThrown);
+              Swal.fire({
+                title: textStatus.toUpperCase(),
+                text: jqXHR.responseJSON.msg,
+                icon: 'error',
+              });
             }
           });
         }

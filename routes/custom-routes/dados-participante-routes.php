@@ -11,3 +11,7 @@ Route::get('/get-acoes',
 Route::get('/pontos-participante',
   [ParticipanteController::class, 'pontosTotalParticipante']
 )->name('pontosParticipante');
+
+Route::delete('/excluir-registro-participante', 
+  [ParticipanteController::class, 'apagarRegistro']
+)->name('excluirRegistroParticipante');

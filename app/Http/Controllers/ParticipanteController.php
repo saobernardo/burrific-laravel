@@ -53,7 +53,10 @@ class ParticipanteController extends Controller
   }
 
   public function apagarRegistro(){
-    
+    $query = "DELETE FROM tblburrice_log WHERE id = ?";
+    DB::delete($query, [$_GET['id']]);
+
+    return response()->json(["msg" => "Registro excluído com sucesso"]);
   }
 
   public function desativarParticipante(){}
