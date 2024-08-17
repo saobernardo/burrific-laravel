@@ -47,8 +47,14 @@ class ParticipanteController extends Controller
     $query = "SELECT SUM(tblburrice_log.pontos) AS pontos
               FROM tblburrice_log
               WHERE tblburrice_log.id_participante = ?";
-    $resSelect = DB::select($query, $_GET['id']);
+    $resSelect = DB::select($query, [$_GET['id']]);
 
     return response()->json($resSelect);
   }
+
+  public function apagarRegistro(){
+    
+  }
+
+  public function desativarParticipante(){}
 }

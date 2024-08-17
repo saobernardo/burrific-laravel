@@ -84,7 +84,7 @@
         <div>
           <h2>
             <span class="id-label">#</span>
-            <span id="id-id-variable" class="id-variable"></span>
+            <span id="id-variable" class="id-variable"></span>
             <span class="nome-label"> - Nome: </span>
             <i><span id="nombre-variable" class="nome-variable"></span></i>
           </h2>
@@ -123,11 +123,11 @@
           url: '/get-acoes?id='+getValue,
           type: 'GET', 
           dataType: 'json',
-          async: true,
+          async: false,
           success: function(data){
             document.title = `Participante: ${data[0].nome}`;
 
-            let spanId = document.getElementById('id-id-variable')
+            let spanId = document.getElementById('id-variable')
             if(spanId){
               let texto = document.createTextNode(data[0].id);
               spanId.appendChild(texto)
@@ -150,25 +150,34 @@
             })
           },
           error: function (jqXHR, textStatus, errorThrown) {
-            console.log("Erro");
             console.error('Failed to retrieve data: ' + errorThrown);
+            Swal.fire({
+              title: textStatus.toUpperCase(),
+              text: jqXHR.responseJSON.msg,
+              icon: 'error',
+            });
           }
         });
 
         $.ajax({
-          url: './init-index-2.php?id='+getValue,
+          url: './pontos-participante?id='+getValue,
           type: 'GET', 
           dataType: 'json',
+          async: true,
           success: function(data){
             var spanPontos = document.getElementById('points-variable')
             if(spanPontos){
-              let texto = document.createTextNode(data.pontos)
-              spanPontos.appendChild(texto)
+              let texto = document.createTextNode(data[0].pontos);
+              spanPontos.appendChild(texto);
             }
           },
           error: function (jqXHR, textStatus, errorThrown) {
-            console.log("Erro");
             console.error('Failed to retrieve data: ' + errorThrown);
+            Swal.fire({
+              title: textStatus.toUpperCase(),
+              text: jqXHR.responseJSON.msg,
+              icon: 'error',
+            });
           }
         });
       });

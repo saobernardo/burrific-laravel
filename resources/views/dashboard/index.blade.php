@@ -126,6 +126,7 @@
         $.ajax({
           url: "/get-graphic-data",
           type: 'GET',
+          async: true,
           dataType: 'json',
           success: async function(data){
             data.forEach(function (json, i) {
@@ -173,6 +174,11 @@
           },
           error: function (jqXHR, textStatus, errorThrown) {
             console.error('Failed to retrieve data: ' + errorThrown);
+            Swal.fire({
+              title: textStatus.toUpperCase(),
+              text: jqXHR.responseJSON.msg,
+              icon: 'error',
+            });
           }
         });
 
@@ -187,7 +193,7 @@
             $.each(data, function(index, item){
               bodyTable.append(`<tr>
                                   <td>${item.id}</td>
-                                  <td><a href='get-acoes?id=${item.id}' class='link-info link-offset-2'>${data[index].nome}</a></td>
+                                  <td><a href='/participant-details-page?id=${item.id}' class='link-info link-offset-2'>${data[index].nome}</a></td>
                                   <td>${data[index].descricao}</td>
                                   <td>${data[index].pontos}</td>
                                 </tr>`);
@@ -195,6 +201,11 @@
           },
           error: function (jqXHR, textStatus, errorThrown) {
             console.error('Failed to retrieve data: ' + errorThrown);
+            Swal.fire({
+              title: textStatus.toUpperCase(),
+              text: jqXHR.responseJSON.msg,
+              icon: 'error',
+            });
           }
         });
       });

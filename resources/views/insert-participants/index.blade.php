@@ -119,6 +119,11 @@
           },
           error: function(jqXHR, textStatus, errorThrown){
             console.error('Failed to retrieve data: ' + errorThrown);
+            Swal.fire({
+              title: textStatus.toUpperCase(),
+              text: jqXHR.responseJSON.msg,
+              icon: 'error',
+            });
           }
         });
 
@@ -144,7 +149,7 @@
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 // Handle errors here
-                console.error(jqXHR.responseJSON.msg);
+                console.error('Failed to retrieve data: ' + errorThrown);
                 Swal.fire({
                   title: textStatus.toUpperCase(),
                   text: jqXHR.responseJSON.msg,
