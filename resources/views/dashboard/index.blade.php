@@ -187,7 +187,7 @@
             $.each(data, function(index, item){
               bodyTable.append(`<tr>
                                   <td>${item.id}</td>
-                                  <td><a href='../resumo-participante/index.php?id=${item.id}' class='link-info link-offset-2'>${data[index].nome}</a></td>
+                                  <td><a href='get-acoes?id=${item.id}' class='link-info link-offset-2'>${data[index].nome}</a></td>
                                   <td>${data[index].descricao}</td>
                                   <td>${data[index].pontos}</td>
                                 </tr>`);

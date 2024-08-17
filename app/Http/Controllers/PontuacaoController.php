@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
 class PontuacaoController extends Controller
 {
   public function getParticipants(Request $request){
     $query = DB::select("SELECT id, nome FROM tblparticipantes ORDER BY nome ASC");
-    return json_encode($query);
+    return response()->json($query);
   }
 
   public function register(Request $request){
@@ -19,6 +20,6 @@ class PontuacaoController extends Controller
                 VALUES (?, ?, ?, CURDATE())", 
                 [$requestData['id-participante'], $requestData['form-description'], $requestData['qty-points']]);
 
-    return json_encode(['msg' => 'Pontuação registrada com sucesso']);
+    return response()->json(['msg' => 'Pontuação registrada com sucesso']);
   }
 }

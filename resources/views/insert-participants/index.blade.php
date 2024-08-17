@@ -134,23 +134,20 @@
             processData: false,
             contentType: false,
             success: function(response){
-              let responseParsed = JSON.parse(response);
-              //console.log(responseParsed);
-
               swal.fire({
                 title: 'Inscrito',
-                text: responseParsed.msg,
+                text: response.msg,
                 icon: 'success'
               });
 
-              setTimeout(location.href = "{{ route('dashboard') }}", 5000);
+              setTimeout(location.href = "{{ route('dashboard') }}", 7000);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 // Handle errors here
-                console.error(textStatus, errorThrown);
+                console.error(jqXHR.responseJSON.msg);
                 Swal.fire({
-                  title: textStatus,
-                  text: errorThrown,
+                  title: textStatus.toUpperCase(),
+                  text: jqXHR.responseJSON.msg,
                   icon: 'error',
                 });
             }

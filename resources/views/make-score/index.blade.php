@@ -138,15 +138,13 @@
             processData: false,
             contentType: false,
             success: function(response){
-              let responseParsed = JSON.parse(response);
-
               swal.fire({
                 title: 'Registrado',
-                text: responseParsed.msg,
+                text: response.msg,
                 icon: 'success'
               });
 
-              setTimeout(location.href = "{{ route('dashboard') }}", 5000);
+              setTimeout(location.href = "{{ route('dashboard') }}", 7000);
             },
             error: function(jqXHR, textStatus, errorThrown){
               console.error(textStatus, errorThrown);

@@ -14,7 +14,7 @@ class ParticipanteController extends Controller
     $query = "SELECT id, descricao FROM tbldepartamentos";
     $resSelect = DB::select($query);
 
-    return json_encode($resSelect);
+    return response()->json($resSelect);
   }
 
   public function register(Request $request){
@@ -24,13 +24,31 @@ class ParticipanteController extends Controller
     $resSelect = DB::select($query, [$requestData['inputNome'], $requestData['idDepartamento']]);
 
     if(sizeof($resSelect) > 0){
-      throw new Exception(json_encode(["msg" => "Usuário já inserido"]));
+      return response()->json(["msg" => "Usuário já inserido"], 409);
     }
 
     $queryInsert = "INSERT INTO tblparticipantes (nome, departamento)
                   VALUES (?, ?)";
     DB::insert($queryInsert, [$requestData['inputNome'], $requestData['idDepartamento']]);
 
-    return json_encode(["msg" => "Usuário cadastrado com sucesso"]);
+    return response()->json(["msg" => "Usuário cadastrado com sucesso"]);
+  }
+
+  public function getAcoesParticipante(Request $request){
+    $query = "SELECT tpa.id AS id, tpa.nome AS nome, tb.descricao AS descricao, DATE_FORMAT(tb.data_ocorrido, '%d/%m/%Y') AS data_ocorrido, tb.id AS burriceId
+              FROM tblparticipantes tpa INNER JOIN tblburrice_log tb ON tpa.id = tb.id_participante
+              WHERE tpa.id = ?";
+    $resSelect = DB::select($query, [$_GET['id']]);
+
+    return response()->json($resSelect);
+  }
+
+  public function pontosTotalParticipante(){
+    $query = "SELECT SUM(tblburrice_log.pontos) AS pontos
+              FROM tblburrice_log
+              WHERE tblburrice_log.id_participante = ?";
+    $resSelect = DB::select($query, $_GET['id']);
+
+    return response()->json($resSelect);
   }
 }
