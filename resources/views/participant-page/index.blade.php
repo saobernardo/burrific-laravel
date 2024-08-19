@@ -43,7 +43,7 @@
   </head>
   <body>
     <script>
-      function excluirBurrice(id){
+      function excluir(id){
           $.ajax({
             type: "DELETE",
             url: `/excluir-registro-participante?id=${id}&_token={{csrf_token()}}`,
@@ -60,6 +60,10 @@
               });
             }
           });
+        }
+
+        function editar(id){
+          location.href = "{{ route('edit-participant') }}";
         }
     </script>
     <nav class='navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body'>
@@ -104,6 +108,7 @@
         <table class="table">
           <thead>
             <tr>
+              <th scope="col">Editar</th>
               <th scope="col">Data</th>
               <th scope="col">Descrição</th>
               <th scope="col">Excluir?</th>
@@ -121,9 +126,9 @@
         const urlParams = new URLSearchParams(window.location.search);
         const getValue = urlParams.get('id');
 
-        /*if(getValue === null){
-          window.location = '../../../404.php';
-        }*/
+        if(getValue === null){
+          window.location = '/view404';
+        }
         
         $.ajax({
           url: '/get-acoes?id='+getValue,
@@ -149,9 +154,10 @@
 
             $.each(data, function(index, item){
               bodyTable.append(`<tr>
+                                <td><center><i class="fa-solid fa-highlighter" id="botaoEditar" onClick="edit(${data[index].burriceId})"></i></center></td>
                                 <td>${data[index].data_ocorrido}</td>
                                 <td>${data[index].descricao}</td>
-                                <td><center><i class="fa-solid fa-trash buttonHover" id="botaoExcluir" onClick='excluirBurrice(${data[index].burriceId})'></i></center></td>
+                                <td><center><i class="fa-solid fa-trash buttonHover" id="botaoExcluir" onClick='excluir(${data[index].burriceId})'></i></center></td>
                                 </tr>`);
             })
           },

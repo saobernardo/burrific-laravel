@@ -22,4 +22,6 @@ class PontuacaoController extends Controller
 
     return response()->json(['msg' => 'Pontuação registrada com sucesso']);
   }
+
+  public function editarRegistro(){}
 }

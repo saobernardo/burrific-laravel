@@ -31,7 +31,7 @@ class ParticipanteController extends Controller
                   VALUES (?, ?)";
     DB::insert($queryInsert, [$requestData['inputNome'], $requestData['idDepartamento']]);
 
-    return response()->json(["msg" => "Usuário cadastrado com sucesso"]);
+    return response()->json(["msg" => "Usuário cadastrado com sucesso"], 200);
   }
 
   public function getAcoesParticipante(Request $request){
@@ -40,7 +40,7 @@ class ParticipanteController extends Controller
               WHERE tpa.id = ?";
     $resSelect = DB::select($query, [$_GET['id']]);
 
-    return response()->json($resSelect);
+    return response()->json($resSelect, 200);
   }
 
   public function pontosTotalParticipante(){
@@ -49,15 +49,24 @@ class ParticipanteController extends Controller
               WHERE tblburrice_log.id_participante = ?";
     $resSelect = DB::select($query, [$_GET['id']]);
 
-    return response()->json($resSelect);
+    return response()->json($resSelect, 200);
   }
 
-  public function apagarRegistro(){
+  public function apagarRegistro(Request $request){
     $query = "DELETE FROM tblburrice_log WHERE id = ?";
     DB::delete($query, [$_GET['id']]);
 
-    return response()->json(["msg" => "Registro excluído com sucesso"]);
+    return response()->json(["msg" => "Registro excluído com sucesso"], 200);
   }
 
   public function desativarParticipante(){}
+
+  public function editarParticipante(Request $request){
+    $requestData = $request->all();
+
+    $query = "UPDATE tblparticipantes SET nome = ?, departamento ? WHERE id = ?";
+    DB::update($query, [$requestData['inputNome'], $requestData['selectDepartamento'], $requestData['id']]);
+
+    return response()->json(["msg" => "Registro editado com sucesso"], 200);
+  }
 }
