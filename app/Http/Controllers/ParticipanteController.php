@@ -10,6 +10,10 @@ use App\models\dashboard;
 
 class ParticipanteController extends Controller
 {
+  public function viewEditParticipantPage(){
+    return view('partiipant-page.edit-participant');
+  }
+
   public function getDepartments(Request $request){
     $query = "SELECT id, descricao FROM tbldepartamentos";
     $resSelect = DB::select($query);

@@ -63,7 +63,7 @@
         }
 
         function editar(id){
-          location.href = "{{ route('edit-participant') }}";
+          //location.href = "{{ route('editParticipantPage') }}";
         }
     </script>
     <nav class='navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body'>

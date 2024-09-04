@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ParticipanteController;
 
+Route::get('/edit-participant-page',
+  [ParticipanteController::class, 'viewEditParticipantPage']
+)->name('editParticipantPage');
+
 Route::get('/get-acoes',
   [ParticipanteController::class, 'getAcoesParticipante']
 )->name('getAcoes');
