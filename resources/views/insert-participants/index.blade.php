@@ -89,7 +89,7 @@
       <form id="form-cadastro" action="{{ route('newParticipant') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="mb-3">
-          <label for="inputNome" class="form-label">Nome do aminal</label>
+          <label for="inputNome" class="form-label">Nome Completo</label>
           <input type="text" class="form-control" id="inputNome" name="inputNome" required>
         </div>
         <div class="mb-3">
