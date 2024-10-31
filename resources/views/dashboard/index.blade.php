@@ -82,8 +82,8 @@
             Participantes
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Cadastrar Participante</a>
-            <a class="dropdown-item" href="{{ route('cadastrarParticipantesPage') }}">Participantes</a>
+            <a class="dropdown-item" href="{{ route('cadastrarParticipantesPage') }}">Cadastrar Participante</a>
+            <a class="dropdown-item" href="#">Participantes</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>

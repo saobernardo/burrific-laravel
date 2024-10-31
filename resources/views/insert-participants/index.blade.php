@@ -61,30 +61,43 @@
     </style>
   </head>
 <body>
-  <nav class='navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body'>
-    <div class='container-fluid'>
-      <a class='navbar-brand' href="{{route('dashboard')}}">Burrific</a>
+<nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+      <a class='navbar-brand' href="{{ route('dashboard') }}">Burrific</a>
       <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
         <span class='navbar-toggler-icon'></span>
       </button>
-      <div class='collapse navbar-collapse' id='navbarSuportContent'>
-        <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
-          <li class='nav-item'>
+      <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+        <ul class='navbar-nav mr-auto'>
+          <li class='nav-item active'>
             <a class='nav-link' aria-current='page' href="{{ route('dashboard') }}">Home</a>
           </li>
-            
-          <li class='nav-item'>
-            <a class='nav-link active' aria-current='page' href="{{ route('cadastrarParticipantesPage') }}">Cadastrar Participante</a>
-          </li>
-            
-          <li class='nav-item'>
-            <a class='nav-link active' aria-current='page' href="{{ route('registrarPontosPage') }}">Registrar Pontos</a>
-          </li>
 
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Participantes
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('cadastrarParticipantesPage') }}">Cadastrar Participante</a>
+            <a class="dropdown-item" href="#">Participantes</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+            
+          <!--<li class='nav-item'>
+            <a class='nav-link active' aria-current='page' href="{{ route('cadastrarParticipantesPage') }}">Cadastrar Participante</a>
+          </li>-->
+            
+          <li class='nav-item'>
+            <a class="nav-link" aria-current="page" href="{{ route('registrarPontosPage') }}">Registrar Pontos</a>
+          </li>
         </ul>
+        <!--<form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar participante</button>
+        </form>-->
       </div>
-    </div>
-  </nav>
+    </nav>
     <div class="form-div">
       <form id="form-cadastro" action="{{ route('newParticipant') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
