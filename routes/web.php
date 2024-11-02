@@ -27,6 +27,6 @@ Route::get('/view404',
 )->name('view404');
 
 require __DIR__."/custom-routes/dashboard-routes.php";
-require __DIR__."/custom-routes/cadastrar-participantes-routes.php";
+require __DIR__."/custom-routes/participantes-routes.php";
 require __DIR__."/custom-routes/makescore-routes.php";
 require __DIR__."/custom-routes/dados-participante-routes.php";

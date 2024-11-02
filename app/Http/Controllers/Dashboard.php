@@ -31,6 +31,6 @@ class Dashboard extends Controller
   }
 
   public function viewParticipantesDetalhes(Request $request){
-    return view('participant-page.index');
+    return view('participant-page.participant-details');
   }
 }

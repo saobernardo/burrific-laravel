@@ -10,7 +10,7 @@ use App\models\MenuModel;
 class MenuController extends Controller
 {
   public function viewCadastrarParticipante(Request $request){
-    return view('insert-participants.index');
+    return view('participant-page.insert-participant');
   }
 
   public function viewRegistrarPontos(Request $request){

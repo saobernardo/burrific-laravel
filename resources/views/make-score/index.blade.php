@@ -58,21 +58,14 @@
           </li>
 
           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Participantes
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('cadastrarParticipantesPage') }}">Cadastrar Participante</a>
-            <a class="dropdown-item" href="#">Participantes</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-            
-          <!--<li class='nav-item'>
-            <a class='nav-link active' aria-current='page' href="{{ route('cadastrarParticipantesPage') }}">Cadastrar Participante</a>
-          </li>-->
-            
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Participantes
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ route('cadastrarParticipantesPage') }}">Cadastrar Participante</a>
+              <a class="dropdown-item" href="#">Participantes</a>
+            </div>
+          </li>
           <li class='nav-item'>
             <a class="nav-link" aria-current="page" href="{{ route('registrarPontosPage') }}">Registrar Pontos</a>
           </li>

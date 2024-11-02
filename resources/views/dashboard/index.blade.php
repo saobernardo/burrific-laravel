@@ -88,14 +88,9 @@
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
         </li>
-            
-          <!--<li class='nav-item'>
-            <a class='nav-link active' aria-current='page' href="{{ route('cadastrarParticipantesPage') }}">Cadastrar Participante</a>
-          </li>-->
-            
-          <li class='nav-item'>
-            <a class="nav-link" aria-current="page" href="{{ route('registrarPontosPage') }}">Registrar Pontos</a>
-          </li>
+        <li class='nav-item'>
+          <a class="nav-link" aria-current="page" href="{{ route('registrarPontosPage') }}">Registrar Pontos</a>
+        </li>
         </ul>
         <!--<form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

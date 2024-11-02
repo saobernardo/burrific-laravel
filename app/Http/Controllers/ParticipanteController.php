@@ -11,7 +11,7 @@ use App\models\dashboard;
 class ParticipanteController extends Controller
 {
   public function viewEditParticipantPage(){
-    return view('partiipant-page.edit-participant');
+    return view('partipant-page.edit-participant');
   }
 
   public function getDepartments(Request $request){
